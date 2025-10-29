@@ -16,27 +16,31 @@ Ils pourront aussi saisir où ils en sont dans la lecture de leurs livres.
 ### 2.2. Comment sont gérées les données
 Les données sont stockées dans une base de données sur mon serveur, la communication entre l'application et la BDD se fera avec une API.
 
-## 3. Structure
+## 3. Structure 
 
-**users**.books {[
-&nbsp;&nbsp;&nbsp; bookId: **books**.id
-&nbsp;&nbsp;&nbsp; serie: nom de la serie saisie par l'user
-&nbsp;&nbsp;&nbsp; tome: tome de la serie saisie par l'user
+```
+Élements dans les tables de la BDD dont le type est JSON
+```
+
+**users**.books {[<br>
+&nbsp;&nbsp;&nbsp; bookId: **books**.id <br>
+&nbsp;&nbsp;&nbsp; serie: nom de la serie saisie par l'user<br>
+&nbsp;&nbsp;&nbsp; tome: tome de la serie saisie par l'user<br>
 ]}
 
-**users**.reading_list {[
-&nbsp;&nbsp;&nbsp; bookId: **books**.id
-&nbsp;&nbsp;&nbsp; number_of_pages_reads: nombre de page lu par l'utilisateur
-&nbsp;&nbsp;&nbsp; number_of_pages: **books**.number_of_pages
+**users**.reading_list {[<br>
+&nbsp;&nbsp;&nbsp; bookId: **books**.id<br>
+&nbsp;&nbsp;&nbsp; number_of_pages_reads: nombre de page lu par l'utilisateur<br>
+&nbsp;&nbsp;&nbsp; number_of_pages: **books**.number_of_pages<br>
 ]}
 
-**groupes**.comic_books {[
-&nbsp;&nbsp;&nbsp; bookId: id du livre dans **books**
-&nbsp;&nbsp;&nbsp; serie: nom de la serie saisie par l'user
-&nbsp;&nbsp;&nbsp; tome: tome de la serie saisie par l'user
+**groupes**.comic_books {[<br>
+&nbsp;&nbsp;&nbsp; bookId: id du livre dans **books**<br>
+&nbsp;&nbsp;&nbsp; serie: nom de la serie saisie par l'user<br>
+&nbsp;&nbsp;&nbsp; tome: tome de la serie saisie par l'user<br>
 ]}
 
-**groupes**.members {[
-&nbsp;&nbsp;&nbsp; userId: **users**.id
-&nbsp;&nbsp;&nbsp; status: waiting / accepted
+**groupes**.members {[<br>
+&nbsp;&nbsp;&nbsp; userId: **users**.id<br>
+&nbsp;&nbsp;&nbsp; status: waiting / accepted<br>
 ]}
