@@ -16,7 +16,7 @@ Ils pourront aussi saisir où ils en sont dans la lecture de leurs livres.
 ### 2.2. Comment sont gérées les données
 Les données sont stockées dans une base de données sur mon serveur, la communication entre l'application et la BDD se fera avec une API.
 
-## 3. Structure 
+### 2.3. Structure 
 
 ```
 Élements dans les tables de la BDD dont le type est JSON
@@ -44,3 +44,42 @@ Les données sont stockées dans une base de données sur mon serveur, la commun
 &nbsp;&nbsp;&nbsp; userId: **users**.id<br>
 &nbsp;&nbsp;&nbsp; status: waiting / accepted<br>
 ]}
+
+## 3. API
+
+### 3.1. Users
+#### 3.1.1 Login
+**Route**
+```
+POST http://localhost:3000/users/login
+```
+**Body**
+```
+{
+    "email" : "email",
+    "phone_number": "phone",
+    "password":"password"
+}
+```
+
+#### 3.1.2 Register
+**Route**
+```
+POST localhost:3000/users/register
+```
+**Body**
+```
+{
+    "last_name": "bravo",
+    "first_name": "david",
+    "email" : "david.bravo@sogedda.fr",
+    "phone_number" : "0655568558",
+    "password" : "test"
+}
+```
+
+#### 3.1.2 GetUserById
+**Route**
+```
+GET http://localhost:3000/users/:id
+```

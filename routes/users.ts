@@ -1,6 +1,5 @@
 import express from 'express';
-import UsersService from '../users';
-import * as bcrypt from 'bcryptjs';
+import UsersService from '../sql/users';
 
 const router = express.Router();
 
@@ -31,4 +30,9 @@ router.post('/login', async (req, res) => {
   res.json(users)
 });
 
+router.get('/:id', async (req, res) => {
+  const id = Number(req.params.id)
+  const users = await usersService.getUserById(id);
+  res.json(users)
+});
 export default router;

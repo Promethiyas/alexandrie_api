@@ -1,8 +1,4 @@
-import bcrypt from "bcryptjs";
-import connection from "./db";
-import { sha256 } from "js-sha256";
-import { createHash } from "crypto";
-
+import connection from "../db";
 
 class UsersService {
 
@@ -30,9 +26,19 @@ class UsersService {
     
 
     register(last_name: string, first_name: string ,email: string, phone_number: string, password: string) {
-        // crypter password
         return new Promise((resolve, reject) => {
             connection.query('INSERT INTO users VALUES (0,?,?,?,?,"{}","{}",AES_ENCRYPT(?,"test"))', [last_name, first_name,email,phone_number, password], (error, results) => {
+                if (error){
+                    return reject(error);
+                }
+                resolve(results);
+            })
+        })
+    }
+
+    getUserById(id: number){
+        return new Promise((resolve, reject) => {
+            connection.query('SELECT id, last_name, first_name, email, phone_number, comic_books, reading_list FROM users WHERE id = ?', [id], (error, results) => {
                 if (error){
                     return reject(error);
                 }

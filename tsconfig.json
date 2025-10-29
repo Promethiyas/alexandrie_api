@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "useUnknownInCatchVariables": false,
     "esModuleInterop": true,
     "target": "es6",
     "module": "commonjs",
@@ -7,6 +8,6 @@
     "rootDir": "./",
     "strict": true
   },
-  "include": ["**/*.ts"],
+  "include": ["**/*.ts", "routes/users.ts"],
   "exclude": ["node_modules"]
 }
