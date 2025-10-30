@@ -25,7 +25,7 @@ class LibrairiesService {
         })
     }
 
-    getUserComicBooks(idUser: number){
+    getUserComicBooks(idUser: number){ 
         return new Promise((resolve, reject) => {
             connection.query('SELECT comic_books FROM users WHERE id = ?', [idUser], (error, results) => {
                 if (error){
