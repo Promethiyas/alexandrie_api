@@ -1,5 +1,6 @@
 import express from 'express';
 import UsersService from '../sql/users';
+import { InsertSql, Login } from '../type';
 
 const router = express.Router();
 
@@ -21,13 +22,21 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/register', async (req, res) => {
-  const users = await usersService.register(req.body.last_name, req.body.first_name, req.body.email, req.body.phone_number,req.body.password);
-  res.json(users);
+  const users: InsertSql = await usersService.register(req.body.last_name, req.body.first_name, req.body.email, req.body.phone_number,req.body.password);
+  if (users && users.affectedRows === 1){
+    res.status(200).json("Compte créé");
+  }else{
+    res.status(400).json("Erreur lors de la création du compte");
+  }
 });
 
 router.post('/login', async (req, res) => {
-  const users = await usersService.login(req.body.email,req.body.phone_number,req.body.password);
-  res.json(users)
+  const users: Login = await usersService.login(req.body.email,req.body.phone_number,req.body.password);
+  if (users && users[0] ){
+    res.status(200).json(users)
+  }else{
+    res.status(400).json("Erreur lors de la connection")
+  }
 });
 
 router.get('/:id', async (req, res) => {
